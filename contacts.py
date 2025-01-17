@@ -9,3 +9,7 @@ class Contacts:
         self.phone = phone_no
         self.email = email
         
+    def __str__(self):
+        return (f"Name: {self.first} {self.last}\n"
+                f"Address: {self.address}, {self.city}, {self.state}, {self.zip}\n"
+                f"Phone: {self.phone}\nEmail: {self.email}")
