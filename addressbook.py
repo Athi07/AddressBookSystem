@@ -25,4 +25,57 @@ class AddressBook:
         else:
             for contact in self.contacts_list:
                 print(contact)
-    
+                print()
+
+    def find_contact(self, first_name, last_name):
+        for contact in self.contacts_list:
+            if contact.first == first_name and contact.last == last_name:
+                return contact
+        else:
+            return None
+        
+    def edit_contact(self):
+        
+        first_name = input("Enter the first name of the contact: ")
+        last_name = input("Enter the last name of the contact: ")
+
+        contact = self.find_contact(first_name, last_name)
+
+        if contact is None:
+            print("No contact found with this first and last name!")
+        else:
+            print("Contact found!")
+            #Select field to edit
+            print("\nSelect the field you want to edit: ")
+            print("1. Address")
+            print("2. City")
+            print("3. State")
+            print("4. Zip Code")
+            print("5. Phone Number")
+            print("6. Email ID")
+
+            option = int(input("Choose option: "))
+
+            if option == 1:
+                contact.address = input("Enter the new address: ")
+
+            elif option == 2:
+                contact.city = input("Enter the new City details: ")
+
+            elif option == 3:
+                contact.state = input("Enter the new State details: ")
+
+            elif option == 4:
+                contact.zip = input("Enter the new Zip Code details: ")
+
+            elif option == 5:
+                contact.phone = input("Enter the new Phone Number details: ")
+
+            elif option == 6:
+                contact.email = input("Enter the new Email ID details: ")
+
+            else:
+                print("Invalid Choice!")
+
+        print("Contact Updated!")
+

@@ -8,7 +8,8 @@ while True:
     print("\nChoose Option: ")
     print("1. Add Contact")
     print("2. Display Contacts")
-    print("3. Exit")
+    print("3. Edit Contact")
+    print("4. Exit")
 
     option = int(input("Enter Option: "))
 
@@ -17,6 +18,9 @@ while True:
     
     elif option == 2:
         address_book.display_contacts()
+
+    elif option == 3:
+        address_book.edit_contact()
     
     else:
         break
