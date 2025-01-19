@@ -8,6 +8,11 @@ class AddressBook:
         while True:
             self.first = input("Enter First Name: ")
             self.last = input("Enter Last Name: ")
+            # Duplicate contact
+            for i in self.contacts_list:
+                if i.first == self.first and i.last == self.last:
+                    print("This contact already exists!")
+                    return
             self.address = input("Enter Address: ")
             self.city = input("Enter City: ")
             self.state = input("Enter State: ")
@@ -22,6 +27,7 @@ class AddressBook:
             additional = input("Do you want to add another contact (Yes/No): ").lower()
             if additional == 'no':
                 break
+
     def display_contacts(self):
         if len(self.contacts_list) == 0:
             print("No Contacts available")
