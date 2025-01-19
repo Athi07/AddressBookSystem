@@ -79,3 +79,20 @@ class AddressBook:
 
         print("Contact Updated!")
 
+    def delete_contact(self):
+
+        first_name = input("Enter the first name of the contact: ")
+        last_name = input("Enter the last name of the contact: ")
+
+        contact = self.find_contact(first_name,last_name)
+
+        if contact is None:
+            print("Contact not found!")
+
+        else:
+            print("Contact Found!")
+            for _ in self.contacts_list:
+                if contact in self.contacts_list:
+                    self.contacts_list.remove(contact)
+                    print("Contact Deleted!")
+                
