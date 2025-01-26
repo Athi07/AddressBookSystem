@@ -78,6 +78,9 @@ while True:
                 print(contact)
                 print()
 
+        else:
+            print(f"No contacts found with the city name {city}")
+
     elif option == 5:
         res = []
         search = "state"
@@ -90,6 +93,9 @@ while True:
             for contact in res:
                 print(contact)
                 print()
+        
+        else:
+            print(f"No contacts found with the state name {state}")
     
     elif option == 6:
         break
