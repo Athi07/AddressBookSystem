@@ -106,7 +106,7 @@ while True:
         for book,abook in address_book.items():
             for contact in abook.search_city_state(city, search):
                 res.append(contact)
-        print(len(res))
+        print(f"The number of contacts existing with this city name {city} are: {len(res)}")
 
         if len(res) == 0:
             print(f"No contacts found with the city name {city}")
@@ -118,7 +118,7 @@ while True:
         for book,abook in address_book.items():
             for contact in abook.search_city_state(state, search):
                 res.append(contact)
-        print(len(res))
+        print(f"The number of contacts existing with this state name {state} are: {len(res)}")
 
         if len(res) == 0:
             print(f"No contacts found with the state name {state}")
