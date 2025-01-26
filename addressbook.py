@@ -119,4 +119,18 @@ class AddressBook:
         self.contacts_list.sort(key = lambda contact: (contact.first.lower(), contact.last.lower()))
         print("Contacts sorted alphabetcally by name!")
         self.display_contacts()
-    
+
+    def sort_contacts_by_fields(self, field):
+        if field.lower() == "city":
+            self.contacts_list.sort(key = lambda contact: (contact.city.lower()))
+        elif field.lower() == "state":
+            self.contacts_list.sort(key = lambda contact: (contact.state.lower()))
+        elif field.lower() == "zip":
+            self.contacts_list.sort(key = lambda contact: (contact.zip))
+
+        if field.lower() not in ["city","state","zip"]:
+            print("Invalid field!, Please choose city, state or zip")
+            return
+        
+        print(f"Contacts sorted by {field}")
+        self.display_contacts()

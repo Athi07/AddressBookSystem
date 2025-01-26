@@ -14,7 +14,8 @@ while True:
     print("6. Number of Contacts living in the same city")
     print("7. Number of Contacts living in the same state")
     print("8. Sort Entries in Address Book alphabetically by name")
-    print("9. Exit")
+    print("9. Sort Entries in Address Book using city, state or zipcode.")
+    print("10. Exit")
 
     option = int(input("Enter Option: "))
 
@@ -132,6 +133,29 @@ while True:
             print(f"No address book found with name {name}")
 
     elif option == 9:
+        name = input("Enter the name of the address book you want to sort: ")
+        if name in address_book:
+            select = address_book[name]
+            print("\Sort by: ")
+            print("1. City")
+            print("2. State")
+            print("3. Zip Code")
+
+            choice = int(input("Choose option: "))
+
+            if choice == 1:
+                select.sort_contacts_by_fields("City")
+            elif choice == 2:
+                select.sort_contacts_by_fields("State")
+            elif choice == 3:
+                select.sort_contacts_by_fields("Zip")
+            else:
+                print("Invalid option!")
+        
+        else:
+            print(f"No address book found with the name {name}")
+
+    elif option == 10:
         break
 
     else:
