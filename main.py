@@ -13,7 +13,8 @@ while True:
     print("5. Search by State")
     print("6. Number of Contacts living in the same city")
     print("7. Number of Contacts living in the same state")
-    print("8. Exit")
+    print("8. Sort Entries in Address Book alphabetically by name")
+    print("9. Exit")
 
     option = int(input("Enter Option: "))
 
@@ -124,6 +125,13 @@ while True:
             print(f"No contacts found with the state name {state}")
 
     elif option == 8:
+        name = input("Enter the name of the address book you want to sort: ")
+        if name in address_book:
+            address_book[name].sort_contacts_by_name()
+        else:
+            print(f"No address book found with name {name}")
+
+    elif option == 9:
         break
 
     else:

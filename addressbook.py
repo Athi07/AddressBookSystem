@@ -115,4 +115,8 @@ class AddressBook:
 
         return match
 
+    def sort_contacts_by_name(self):
+        self.contacts_list.sort(key = lambda contact: (contact.first.lower(), contact.last.lower()))
+        print("Contacts sorted alphabetcally by name!")
+        self.display_contacts()
     
