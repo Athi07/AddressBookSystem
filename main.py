@@ -11,7 +11,9 @@ while True:
     print("3. Display all Address Books")
     print("4. Search by City")
     print("5. Search by State")
-    print("6. Exit")
+    print("6. Number of Contacts living in the same city")
+    print("7. Number of Contacts living in the same state")
+    print("8. Exit")
 
     option = int(input("Enter Option: "))
 
@@ -98,6 +100,30 @@ while True:
             print(f"No contacts found with the state name {state}")
     
     elif option == 6:
+        res = []
+        search = "city"
+        city = input("Enter the name of the city to search: ")
+        for book,abook in address_book.items():
+            for contact in abook.search_city_state(city, search):
+                res.append(contact)
+        print(len(res))
+
+        if len(res) == 0:
+            print(f"No contacts found with the city name {city}")
+
+    elif option == 7:
+        res = []
+        search = "state"
+        state = input("Enter the name of the state to search: ")
+        for book,abook in address_book.items():
+            for contact in abook.search_city_state(state, search):
+                res.append(contact)
+        print(len(res))
+
+        if len(res) == 0:
+            print(f"No contacts found with the state name {state}")
+
+    elif option == 8:
         break
 
     else:
