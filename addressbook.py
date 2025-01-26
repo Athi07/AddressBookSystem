@@ -134,3 +134,21 @@ class AddressBook:
         
         print(f"Contacts sorted by {field}")
         self.display_contacts()
+
+    def save_file(self, filename):
+        with open(filename,'w') as file:
+            for contact in self.contacts_list:
+                file.write(f"{contact.first},{contact.last},{contact.address},{contact.city},{contact.state},{contact.zip},{contact.phone},{contact.email}\n")
+        print(f"Address Book saved to filename {filename}!")
+    
+    def load_file(self,filename):
+        with open(filename,'r') as file:
+            self.contacts_list = []
+            for line in file:
+                data = line.strip().split(",")
+                if len(data) == 8:
+                    contact = Contacts(*data)
+                    self.contacts_list.append(contact)
+                else:
+                    print(f"There are some fields missing in this file {filename}.")
+            print(f"Address Booked loaded successfully from {filename}!")

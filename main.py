@@ -15,7 +15,9 @@ while True:
     print("7. Number of Contacts living in the same state")
     print("8. Sort Entries in Address Book alphabetically by name")
     print("9. Sort Entries in Address Book using city, state or zipcode.")
-    print("10. Exit")
+    print("10. Save Address Book to a file")
+    print("11. Load Address Book from a file")
+    print("12. Exit")
 
     option = int(input("Enter Option: "))
 
@@ -156,6 +158,21 @@ while True:
             print(f"No address book found with the name {name}")
 
     elif option == 10:
+        name = input("Enter the name of the address book to save: ")
+        if name in address_book:
+            filename = input("Enter the filename to store: ")
+            address_book[name].save_file(filename)
+        else:
+            print(f"No address book found with the name {name}")
+            
+    elif option == 11:
+        name = input("Enter the name of the address book to load into: ")
+        filename = input("Enter the filename to load into: ")
+        if name not in address_book:
+            address_book[name] = AddressBook()
+            address_book[name].load_file(filename)
+
+    elif option == 12:
         break
 
     else:
