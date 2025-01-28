@@ -17,7 +17,9 @@ while True:
     print("9. Sort Entries in Address Book using city, state or zipcode.")
     print("10. Save Address Book to a file")
     print("11. Load Address Book from a file")
-    print("12. Exit")
+    print("12. Save address book as CSV")
+    print("13. Load address book from CSV")
+    print("14. Exit")
 
     option = int(input("Enter Option: "))
 
@@ -173,6 +175,21 @@ while True:
             address_book[name].load_file(filename)
 
     elif option == 12:
+        name = input("Enter the name of the address book to save: ")
+        if name in address_book:
+            filename = input("Enter the filename to save as (CSV): ")
+            address_book[name].save_to_csv(filename)
+        else:
+            print(f"No address book found with the name {name}")
+
+    elif option == 13:
+        name = input("Enter the name of the address book to load into: ")
+        filename = input("Enter the filename to load from (CSV): ")
+        if name not in address_book:
+            address_book[name] = AddressBook()
+        address_book[name].load_from_csv(filename)
+
+    elif option == 14:
         break
 
     else:

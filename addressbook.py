@@ -1,3 +1,4 @@
+import csv
 from contacts import Contacts
 
 class AddressBook:
@@ -152,3 +153,20 @@ class AddressBook:
                 else:
                     print(f"There are some fields missing in this file {filename}.")
             print(f"Address Booked loaded successfully from {filename}!")
+
+    def save_to_csv(self,filename):
+        with open(filename,'w',newline='') as csvfile:
+            writer = csv.writer(csvfile)
+            writer.writerow(['First Name','Last Name','Address','City','State','Zip','Phone','Email'])
+            for contact in self.contacts_list:
+                writer.writerow([contact.first,contact.last,contact.address,contact.city,contact.state,contact.zip,contact.phone,contact.email])
+            print(f"Address Book saved as {filename}!")
+
+    def load_from_csv(self,filename):
+        with open(filename,'r') as csvfile:
+            reader = csv.DictReader(csvfile)
+            self.contacts_list = []
+            for row in reader:
+                contact = Contacts(row['First Name'],row['Last Name'],row['Address'],row['City'],row['State'],row['Zip'],row['Phone'],row['Email'])
+                self.contacts_list.append(contact)
+            print(f"Address book loaded from file {filename}!")
