@@ -1,4 +1,5 @@
 import csv
+import json
 from contacts import Contacts
 
 class AddressBook:
@@ -170,3 +171,21 @@ class AddressBook:
                 contact = Contacts(row['First Name'],row['Last Name'],row['Address'],row['City'],row['State'],row['Zip'],row['Phone'],row['Email'])
                 self.contacts_list.append(contact)
             print(f"Address book loaded from file {filename}!")
+
+    def save_to_json(self, filename):
+        with open(filename, 'w') as jsonfile:
+            data = [contact.__dict__ for contact in self.contacts_list]
+            json.dump(data, jsonfile, indent=4)
+        print(f"Address Book saved to JSON file: {filename}")
+
+    def load_from_json(self, filename):
+        with open(filename, 'r') as jsonfile:
+            data = json.load(jsonfile)
+            self.contacts_list = []
+            for entry in data:
+                contact = Contacts(
+                    entry['first'], entry['last'], entry['address'], entry['city'],
+                    entry['state'], entry['zip'], entry['phone'], entry['email']
+                    )
+                self.contacts_list.append(contact)
+        print(f"Address Book loaded from JSON file: {filename}")

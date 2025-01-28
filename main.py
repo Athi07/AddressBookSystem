@@ -19,7 +19,9 @@ while True:
     print("11. Load Address Book from a file")
     print("12. Save address book as CSV")
     print("13. Load address book from CSV")
-    print("14. Exit")
+    print("14. Save address book as JSON")
+    print("15. Load address book as JSON")
+    print("16. Exit")
 
     option = int(input("Enter Option: "))
 
@@ -190,6 +192,21 @@ while True:
         address_book[name].load_from_csv(filename)
 
     elif option == 14:
+        name = input("Enter the name of the address book to save: ")
+        if name in address_book:
+            filename = input("Enter the filename to save as (JSON): ")
+            address_book[name].save_to_json(filename)
+        else:
+            print(f"No address book found with the name {name}")
+
+    elif option == 15:
+        name = input("Enter the name of the address book to load into: ")
+        filename = input("Enter the filename to load from (JSON): ")
+        if name not in address_book:
+            address_book[name] = AddressBook()
+        address_book[name].load_from_json(filename)
+
+    elif option == 16:
         break
 
     else:
